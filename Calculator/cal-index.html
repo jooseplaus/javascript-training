@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta name="viewport" content="with=device-with, inital-scale=1.0" >
+    <meta name="descripton" content="Calculate your webpage price">
+    <link rel="stylesheet" href="cal-styles.css">
+
+
+    <script>
+        // Funktsioon hindade arvutamiseks
+        function calculateTotal() {
+            // Saame valitud väärtused
+            var platformValue = parseFloat(document.getElementById("choose_platform").value);
+            var logoValue = parseFloat(document.getElementById("logo_creation").value);
+            var hostingValue = parseFloat(document.getElementById("hosting").value);
+            
+            // Arvutame koguhinna
+            var totalPrice = platformValue + logoValue + hostingValue;
+
+            // Kuvame koguhinna
+            document.getElementById("total_price").textContent = "Kokku: " + totalPrice + "€";
+        }
+
+        // Kuulame dropdowni muutusi
+        window.onload = function() {
+            // Seome dropdownide muutumisega seotud sündmused
+            document.getElementById("choose_platform").addEventListener("change", calculateTotal);
+            document.getElementById("logo_creation").addEventListener("change", calculateTotal);
+            document.getElementById("hosting").addEventListener("change", calculateTotal);
+        };
+    </script>
+
+</head>
+
+<body>
+    <header>
+        <div class="div_head">
+            <h1 class="head_h1">Webpage Price Calculator</h1>
+            <br>
+            <p class="head_p">Here you can calculate your webpage price based on the options you need simly select different elements and feel free to customize everything.</p>
+        </div>
+    </header>
+
+    <main>
+
+        <div class="div_main">
+            <div class="div_cal_info">
+                <h2 class="h2_main">Main information</h2>
+                <div class="dropdown">
+                    <select name="choose_platform" id="choose_platform" class="select_dropdown">
+                        <option value="400">Template - 400€</option>
+                        <option value="1500">Custom desing - 1500€</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="div_cal_info">
+                <h2 class="h2_main">Additonal Info</h2>
+                <div class="dropdown">
+                    <select name="logo_creation" id="logo_creation" class="select_dropdown">
+                    <option value="300">Yes - 300€</option>
+                    <option value="0">No - 0€</option>
+                    </select>
+                </div>
+
+                <div class="dropdown">
+                    <select name="hosting" id="hosting" class="select_dropdown">
+                    <option value="300">I want hosting - 300€</option>
+                    <option value="0">I dont want hosting</option>
+                    </select>
+                </div>
+
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="div_footer">
+            <p id="total_price">Kokku: 0€</p>
+        </div>
+    </footer>
+</body>
+
+</html>
